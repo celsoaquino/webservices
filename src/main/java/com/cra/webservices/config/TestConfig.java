@@ -1,8 +1,10 @@
 package com.cra.webservices.config;
 
+import com.cra.webservices.entities.Category;
 import com.cra.webservices.entities.Order;
 import com.cra.webservices.entities.User;
-import com.cra.webservices.entities.enums.OrderStatus;
+import com.cra.webservices.enums.OrderStatus;
+import com.cra.webservices.repositories.CategoryRepository;
 import com.cra.webservices.repositories.OrderRepository;
 import com.cra.webservices.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +25,24 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Override
     public void run(String... args) throws Exception {
+
+        Category cat1 = new Category(null, "Eletronics");
+        Category cat2 = new Category(null, "Books");
+        Category cat3 = new Category(null, "Computers");
+
+        categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
 
        User u1 = new User(null, "Maria brown", "maria@gmail.com","3535-5454","12345");
        User u2 = new User(null, "Alex green", "alex@gmail.com","5454-3535","54321");
 
-        Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID, u1);
-        Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"),  OrderStatus.DELIVERED, u2);
-        Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"),  OrderStatus.CANCELED, u1);
+       Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.PAID, u1);
+       Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"),  OrderStatus.DELIVERED, u2);
+       Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"),  OrderStatus.CANCELED, u1);
 
 
         userRepository.saveAll(Arrays.asList(u1,u2));

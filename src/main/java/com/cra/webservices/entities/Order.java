@@ -1,11 +1,8 @@
 package com.cra.webservices.entities;
 
-import com.cra.webservices.entities.enums.OrderStatus;
+import com.cra.webservices.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
