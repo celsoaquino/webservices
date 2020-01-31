@@ -1,4 +1,4 @@
-package com.cra.webservices.enums;
+package com.cra.webservices.entities.enums;
 
 public enum OrderStatus {
 
